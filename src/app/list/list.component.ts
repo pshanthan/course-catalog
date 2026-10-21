@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../course.service';
 import { Course } from '../Models/course';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-list',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
 })
