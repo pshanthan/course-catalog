@@ -82,4 +82,9 @@ export class ListComponent implements OnInit {
     this.editingId = null;
     this.courseForm.reset();
   }
+  deleteCourse(id: number) {
+    this.courseService.deleteCourse(id).subscribe(() => {
+      this.courses = this.courses.filter((c) => c.id !== id);
+    });
+  }
 }
