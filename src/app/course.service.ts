@@ -12,4 +12,7 @@ export class CourseService {
   getCourses(): Observable<Course[]> {
     return this.httpClient.get<Course[]>(`${this.apiUrl}`);
   }
+  getCourseById(id: number): Observable<Course> {
+    return this.httpClient.get<Course>(`${this.apiUrl}/${id}`);
+  }
 }
