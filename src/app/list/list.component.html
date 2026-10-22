@@ -1,3 +1,12 @@
+<form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+  <input formControlName="title" />
+  <input formControlName="instructor" />
+  <input formControlName="duration" />
+  <input formControlName="startDate" />
+  <input type="checkbox" formControlName="online" />
+  <button type="submit">SUBMIT</button>
+</form>
+
 <div *ngFor="let c of courses">
   <app-card [course]="c"></app-card>
 </div>
