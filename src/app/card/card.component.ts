@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Course } from '../Models/course';
 import { Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -12,4 +12,6 @@ import { RouterLink } from '@angular/router';
 })
 export class CardComponent {
   @Input() course!: Course;
+  @Output() edit = new EventEmitter<Course>();
+  @Output() delete = new EventEmitter<number>();
 }
