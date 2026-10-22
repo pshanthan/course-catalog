@@ -9,7 +9,6 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-list',
