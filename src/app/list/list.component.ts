@@ -79,5 +79,6 @@ export class ListComponent implements OnInit {
       this.editingId = null;
       this.courseService.addCourse().subscribe((c) => [...this.courses, c]);
     }
+    this.courseForm.reset();
   }
 }
