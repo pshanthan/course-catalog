@@ -61,24 +61,26 @@ export class ListComponent implements OnInit {
   }
   onSubmit() {
     const raw = this.courseForm.getRawValue();
+    const course: Course = {
+      title: raw.title,
+      instructor: raw.instructor,
+      startDate: raw.startDate,
+      online: raw.online,
+      duration: Number(raw.duration),
+    };
     if (this.editingId) {
-      const course: Course = {
-        id: this.editingId,
-        title: raw.title,
-        instructor: raw.instructor,
-        startDate: raw.startDate,
-        online: raw.online,
-        duration: Number(raw.duration),
-      };
+      course.id = this.editingId;
       this.courseService.updateCourse(course).subscribe((updated) => {
         this.courses = this.courses.map((c) =>
           c.id === updated.id ? updated : c,
         );
       });
     } else {
-      this.editingId = null;
-      this.courseService.addCourse().subscribe((c) => [...this.courses, c]);
+      this.courseService.addCourse(course).subscribe((c) => {
+        this.courses = [...this.courses, c];
+      });
     }
+    this.editingId = null;
     this.courseForm.reset();
   }
 }
