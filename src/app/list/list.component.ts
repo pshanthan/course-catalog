@@ -19,7 +19,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class ListComponent implements OnInit {
   constructor(private courseService: CourseService) {}
-  courses: Course[] | null = null;
+  courses: Course[] = [];
   editingId: number | null = null;
   courseForm = new FormGroup({
     title: new FormControl('', {
@@ -71,7 +71,7 @@ export class ListComponent implements OnInit {
         duration: Number(raw.duration),
       };
       this.courseService.updateCourse(course).subscribe((updated) => {
-        this.courses = this.courses?.map((c) =>
+        this.courses = this.courses.map((c) =>
           c.id === updated.id ? updated : c,
         );
       });
