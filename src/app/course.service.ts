@@ -21,4 +21,7 @@ export class CourseService {
   deleteCourse(id: number): Observable<void> {
     return this.httpClient.delete<void>(`${this.apiUrl}/${id}`);
   }
+  addCourse(c: Course) {
+    return this.httpClient.post<Course>(`${this.apiUrl}, ${c}`);
+  }
 }
