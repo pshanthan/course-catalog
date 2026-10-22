@@ -1,5 +1,5 @@
 <div *ngIf="course">
   {{ course.title }} - {{ course.instructor }} - {{ course.startDate }} -
-  {{ course.duration }} -
+  {{ course.duration | durationPipe }} -
   {{ course.online }}
 </div>
