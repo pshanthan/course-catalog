@@ -1,4 +1,3 @@
 <div *ngFor="let c of courses">
-  {{ c.title }} - {{ c.instructor }} - {{ c.startDate }} - {{ c.duration }} -
-  {{ c.online }}
+  <app-card [course]="c"></app-card>
 </div>
