@@ -19,6 +19,7 @@ import {
 export class ListComponent implements OnInit {
   constructor(private courseService: CourseService) {}
   courses: Course[] | null = null;
+  editingId: number | null = null;
   courseForm = new FormGroup({
     title: new FormControl('', { validators: Validators.required }),
     instructor: new FormControl('', { validators: Validators.required }),
@@ -32,4 +33,5 @@ export class ListComponent implements OnInit {
   getCourses() {
     this.courseService.getCourses().subscribe((c) => (this.courses = c));
   }
+  startEdit() {}
 }
