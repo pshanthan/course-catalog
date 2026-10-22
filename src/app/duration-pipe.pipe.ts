@@ -1,12 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'durationPipe'
+  name: 'durationPipe',
 })
 export class DurationPipePipe implements PipeTransform {
-
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(duration: number): string {
+    return String(duration + 'hours');
   }
-
 }
