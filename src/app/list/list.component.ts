@@ -22,11 +22,26 @@ export class ListComponent implements OnInit {
   courses: Course[] | null = null;
   editingId: number | null = null;
   courseForm = new FormGroup({
-    title: new FormControl('', { validators: Validators.required }),
-    instructor: new FormControl('', { validators: Validators.required }),
-    startDate: new FormControl('', { validators: Validators.required }),
-    duration: new FormControl('', { validators: Validators.required }),
-    online: new FormControl(false, { validators: Validators.required }),
+    title: new FormControl('', {
+      nonNullable: true,
+      validators: Validators.required,
+    }),
+    instructor: new FormControl('', {
+      nonNullable: true,
+      validators: Validators.required,
+    }),
+    startDate: new FormControl('', {
+      nonNullable: true,
+      validators: Validators.required,
+    }),
+    duration: new FormControl('', {
+      nonNullable: true,
+      validators: Validators.required,
+    }),
+    online: new FormControl(false, {
+      nonNullable: true,
+      validators: Validators.required,
+    }),
   });
   ngOnInit(): void {
     this.getCourses();
@@ -46,12 +61,14 @@ export class ListComponent implements OnInit {
   }
   onSubmit() {
     const raw = this.courseForm.getRawValue();
-    const course: Course = {
-      title: raw.title,
-      instructor: raw.instructor,
-      startDate: raw.startDate,
-      online: raw.online,
-      duration: Number(raw.duration),
-    };
+    if (this.editingId) {
+      const course: Course = {
+        title: raw.title,
+        instructor: raw.instructor,
+        startDate: raw.startDate,
+        online: raw.online,
+        duration: Number(raw.duration),
+      };
+    }
   }
 }
