@@ -9,6 +9,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-list',
@@ -43,5 +44,14 @@ export class ListComponent implements OnInit {
       duration: String(c.duration),
     });
   }
-  onSubmit() {}
+  onSubmit() {
+    const raw = this.courseForm.getRawValue();
+    const course: Course = {
+      title: raw.title,
+      instructor: raw.instructor,
+      startDate: raw.startDate,
+      online: raw.online,
+      duration: Number(raw.duration),
+    };
+  }
 }
