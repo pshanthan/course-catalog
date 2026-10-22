@@ -43,4 +43,5 @@ export class ListComponent implements OnInit {
       duration: String(c.duration),
     });
   }
+  onSubmit() {}
 }
