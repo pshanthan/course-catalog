@@ -70,10 +70,10 @@ export class ListComponent implements OnInit {
         online: raw.online,
         duration: Number(raw.duration),
       };
-      this.courseService.updateCourse(course).subscribe(() => {
-        const found = this.courses?.filter((c) => c.id === course.id);
-        if (found) {
-        }
+      this.courseService.updateCourse(course).subscribe((updated) => {
+        this.courses = this.courses?.map((c) =>
+          c.id === updated.id ? updated : c,
+        );
       });
     }
   }
