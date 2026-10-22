@@ -15,4 +15,10 @@ export class CourseService {
   getCourseById(id: number): Observable<Course> {
     return this.httpClient.get<Course>(`${this.apiUrl}/${id}`);
   }
+  updateCourse(c: Course): Observable<Course> {
+    return this.httpClient.put<Course>(`${this.apiUrl}/${c.id}`, c);
+  }
+  deleteCourse(id: number): Observable<void> {
+    return this.httpClient.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }
