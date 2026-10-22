@@ -1,15 +1,15 @@
 {
   "courses": [
     {
-      "id": 1,
       "title": "Angular Basics",
       "instructor": "Priya",
-      "duration": 12,
       "startDate": "2026-11-01",
-      "online": true
+      "online": false,
+      "duration": 12,
+      "id": "1"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "C# Deep Dive",
       "instructor": "Rahul",
       "duration": 20,
@@ -17,12 +17,13 @@
       "online": false
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "SQL Fundamentals",
       "instructor": "Anita",
       "duration": 8,
       "startDate": "2026-11-10",
       "online": true
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
