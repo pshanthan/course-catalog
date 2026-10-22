@@ -75,6 +75,8 @@ export class ListComponent implements OnInit {
           c.id === updated.id ? updated : c,
         );
       });
+    } else {
+      this.courseService.addCourse().subscribe((c) => [...this.courses, c]);
     }
   }
 }
