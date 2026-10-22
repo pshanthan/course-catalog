@@ -76,6 +76,7 @@ export class ListComponent implements OnInit {
         );
       });
     } else {
+      this.editingId = null;
       this.courseService.addCourse().subscribe((c) => [...this.courses, c]);
     }
   }
