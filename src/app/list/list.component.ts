@@ -33,5 +33,14 @@ export class ListComponent implements OnInit {
   getCourses() {
     this.courseService.getCourses().subscribe((c) => (this.courses = c));
   }
-  startEdit() {}
+  startEdit(c: Course) {
+    this.editingId = c.id;
+    this.courseForm.patchValue({
+      title: c.title,
+      instructor: c.instructor,
+      startDate: c.startDate,
+      online: c.online,
+      duration: String(c.duration),
+    });
+  }
 }
