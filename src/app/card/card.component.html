@@ -2,4 +2,6 @@
   {{ course.title }} - {{ course.instructor }} - {{ course.startDate }} -
   {{ course.duration | durationPipe }} -
   {{ course.online }}
+  <button (click)="edit.emit(course)">EDIT</button>
+  <button (click)="delete.emit(course.id)">DELETE</button>
 </div>
