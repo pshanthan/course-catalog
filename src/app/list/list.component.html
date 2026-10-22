@@ -8,5 +8,9 @@
 </form>
 
 <div *ngFor="let c of courses">
-  <app-card [course]="c"></app-card>
+  <app-card
+    [course]="c"
+    (edit)="startEdit($event)"
+    (delete)="deleteCourse($event)"
+  ></app-card>
 </div>
