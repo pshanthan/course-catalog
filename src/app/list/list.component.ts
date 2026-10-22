@@ -63,6 +63,7 @@ export class ListComponent implements OnInit {
     const raw = this.courseForm.getRawValue();
     if (this.editingId) {
       const course: Course = {
+        id: this.editingId,
         title: raw.title,
         instructor: raw.instructor,
         startDate: raw.startDate,
