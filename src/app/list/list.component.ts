@@ -3,6 +3,7 @@ import { CourseService } from '../course.service';
 import { Course } from '../Models/course';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from '../card/card.component';
+import { signal } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -18,7 +19,7 @@ import {
 })
 export class ListComponent implements OnInit {
   constructor(private courseService: CourseService) {}
-  courses: Course[] = [];
+  courses = signal<Course[]>([]);
   editingId: number | null = null;
   courseForm = new FormGroup({
     title: new FormControl('', {
@@ -46,7 +47,7 @@ export class ListComponent implements OnInit {
     this.getCourses();
   }
   getCourses() {
-    this.courseService.getCourses().subscribe((c) => (this.courses = c));
+    this.courseService.getCourses().subscribe((c) => this.courses.set(c));
   }
   startEdit(c: Course) {
     this.editingId = c.id ?? null;
@@ -70,21 +71,22 @@ export class ListComponent implements OnInit {
     if (this.editingId) {
       course.id = this.editingId;
       this.courseService.updateCourse(course).subscribe((updated) => {
-        this.courses = this.courses.map((c) =>
-          c.id === updated.id ? updated : c,
+        this.courses.update((list) =>
+          list.map((c) => (c.id === updated.id ? updated : c)),
         );
       });
     } else {
       this.courseService.addCourse(course).subscribe((c) => {
-        this.courses = [...this.courses, c];
+        this.courses.update((list) => [...list, c]);
       });
     }
     this.editingId = null;
     this.courseForm.reset();
   }
-  deleteCourse(id: number) {
+
+  deleteCourses(id: number) {
     this.courseService.deleteCourse(id).subscribe(() => {
-      this.courses = this.courses.filter((c) => c.id !== id);
+      this.courses.update((list) => list.filter((c) => c.id !== id));
     });
   }
 }
